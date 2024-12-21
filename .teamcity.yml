@@ -5,7 +5,7 @@ projects:
     description: "My sample project"
     vcsRoot:
       name: MyVcsRoot
-      url: https://github.com/sohel-7/OPP.git
+      url: https://github.com/ultra2006/aja.git
       branch: main
 
     buildTypes:
@@ -38,7 +38,7 @@ projects:
 
 vcsRoots:
   - name: MyVcsRoot
-    url: https://github.com/sohel-7/OPP.git
+    url: https://github.com/ultra2006/aja.git
     branch: main
 stages:
   - setup
