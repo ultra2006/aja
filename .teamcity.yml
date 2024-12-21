@@ -1,0 +1,46 @@
+version: "2024.1"
+projects:
+  - name: TelegramBot
+    id: TelegramBot
+    vcsRoots:
+      - TelegramBotVCS
+    buildTypes:
+      - name: Build and Run Telegram Bot
+        id: BuildAndRunTelegramBot
+        steps:
+          - name: Upgrade pip
+            type: python
+            pythonEnv:
+              pythonVersion: "3.x"  # Specify the Python version you need
+            script:
+              content: |
+                # Upgrade pip to the latest version
+                python3 -m pip install --upgrade pip
+
+          - name: Install dependencies
+            type: python
+            pythonEnv:
+              pythonVersion: "3.x"  # Ensure the correct Python version
+            script:
+              content: |
+                # Install the required Python packages
+                python3 -m pip install telebot pymongo aiohttp
+
+          - name: Make scripts executable and run bot
+            type: shell
+            script:
+              content: |
+                # Make all files executable
+                chmod +x *  # This makes all files in the directory executable
+                # Make the ultra script executable if it's not already
+                chmod +x ultra
+                # Run the bot script
+                ./ultra  # Run the ultra script directly
+vcsRoots:
+  - id: TelegramBotVCS
+    name: Telegram Bot Repository
+    url: "<your-repository-url>"  # Replace with your Git repository URL
+    branch: "refs/heads/main"  # Specify the branch you want to track (e.g., main)
+
+                               
+       
