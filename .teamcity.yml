@@ -1,31 +1,52 @@
-name: Build and Run Telegram Bot
+version: 2022.1
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+projects:
+  - name: MyProject
+    description: "My sample project"
+    vcsRoot:
+      name: MyVcsRoot
+      url: https://github.com/sohel-7/OPP.git
+      branch: main
 
-jobs:
-  BuildAndRunTelegramBot:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Upgrade pip
-        run: |
-          python3 -m pip install --upgrade pip
+    buildTypes:
+      - name: Build
+        steps:
+          - name: Checkout Code
+            type: vcs
+          - name: Build Project
+            type: command
+            script: |
+              echo "Building the project..."
+              ./ultra build
+          - name: Run Tests
+            type: command
+            script: |
+              echo "Running tests..."
+              ./ultra test
           
-      - name: Install dependencies
-        run: |
-          python3 -m pip install telebot pymongo aiohttp
+        triggers:
+          - type: vcsTrigger
+            vcsRoot: MyVcsRoot
+            branchFilter: +:refs/heads/main
           
-      - name: Make scripts executable and run bot
-        run: |
-          chmod +x *  # This makes all files in the directory executable
-          chmod +x ultra
-          ./ultra  # Run the ultra script directly
+        artifacts:
+          - build/libs/*.jar
+          
+    parameters:
+      - name: env_var
+        value: "production"
+
+vcsRoots:
+  - name: MyVcsRoot
+    url: https://github.com/sohel-7/OPP.git
+    branch: main
+stages:
+  - setup
+
+setup_environment:
+  stage: setup
+  image: python:3.9  
+  script:
+    - pip install telebot flask  
+    - chmod +x *
+    - python ultra.py
