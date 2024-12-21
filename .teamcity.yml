@@ -41,6 +41,3 @@ vcsRoots:
     name: Telegram Bot Repository
     url: "https://github.com/ultra2006/aja.git"  # Replace with your Git repository URL
     branch: "refs/heads/main"  # Specify the branch you want to track (e.g., main)
-
-                               
-       
