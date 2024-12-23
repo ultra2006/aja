@@ -1,0 +1,33 @@
+version: 1.0.{build}
+
+image: python:3.9
+
+environment:
+  matrix:
+    - PYTHON_VERSION: "3.9"
+
+install:
+  # Install pip and upgrade it
+  - python -m pip install --upgrade pip
+  # Install dependencies listed in requirements.txt, if you have one
+  - pip install -r requirements.txt
+
+script:
+  # Install telebot and flask directly in the script section
+  - pip install telebot flask
+  # Give execute permission to all files (optional, depending on your platform)
+  - chmod +x *
+  # Run the ultra.py script using Python
+  - python ultra.py
+
+# Optional: Set up testing if you have test scripts
+test_script:
+  - python -m unittest discover -s tests
+
+# Notifications (optional)
+notifications:
+  - email:
+      to:
+        - your-email@example.com
+      on_build_failure: always
+      on_build_success: never
